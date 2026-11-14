@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hungry - Recipe Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    /* ============================================
+       DESIGN TOKENS
+       ============================================ */
+    :root {
+      --primary-green: #2b5c49;
+      --light-green: #3a7253;
+      --accent-green: #4caf50;
+      --dark-green: #1d4031;
+      --light-bg: #f9f7f2;
+      --card-bg: #ffffff;
+      --text-dark: #2c2c2c;
+      --text-light: #6b6b6b;
+      --text-muted: #9a9a9a;
+      --border: #e8e8e8;
+      --local-tag: #ff9800;
+      --api-tag: #2196f3;
+      --danger: #e53935;
+
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 16px 40px rgba(0,0,0,0.12);
+      --shadow-glow: 0 4px 14px rgba(76,175,80,0.28);
+
+      --radius-sm: 8px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-pill: 50px;
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --transition: all 0.3s var(--ease);
+      --transition-fast: all 0.15s var(--ease);
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: var(--light-bg); }
+    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 5px; border: 2px solid var(--light-bg); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--light-green); }
+
+    :focus-visible {
+      outline: 3px solid var(--accent-green);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ============================================
+       HEADER
+       ============================================ */
+    header {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(76,175,80,0.25), transparent 50%),
+        radial-gradient(circle at 80% 100%, rgba(255,204,0,0.12), transparent 50%),
+        linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+      color: #fff;
+      padding: 48px 0 40px;
+      text-align: center;
+      border-bottom-left-radius: var(--radius-lg);
+      border-bottom-right-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before, header::after {
+      content: ''; position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.04); pointer-events: none;
+    }
+    header::before {
+      width: 280px; height: 280px; top: -100px; left: -80px;
+      animation: float 12s ease-in-out infinite;
+    }
+    header::after {
+      width: 220px; height: 220px; bottom: -90px; right: -60px;
+      animation: float 15s ease-in-out infinite reverse;
+    }
+
+    .logo {
+      display: flex; align-items: center; justify-content: center;
+      gap: 15px; margin-bottom: 15px; position: relative; z-index: 1;
+    }
+    .logo i {
+      font-size: 2.5rem; color: #ffcc00;
+      filter: drop-shadow(0 4px 12px rgba(255,204,0,0.4));
+      animation: gentleBounce 3s ease-in-out infinite;
+    }
+    .logo h1 {
+      font-size: 2.8rem; font-weight: 700; letter-spacing: -0.5px;
+      background: linear-gradient(180deg, #fff 0%, #d5e8dd 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    header p {
+      font-size: 1.15rem; opacity: 0.92; max-width: 600px;
+      margin: 0 auto; position: relative; z-index: 1;
+    }
+
+    /* ============================================
+       SEARCH SECTION
+       ============================================ */
+    .search-section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+    .search-section:focus-within {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(76,175,80,0.3);
+    }
+
+    .search-title {
+      font-size: 1.3rem; font-weight: 600; margin-bottom: 18px;
+      color: var(--primary-green);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .search-title i { color: var(--accent-green); }
+
+    .search-container { display: flex; gap: 12px; margin-bottom: 10px; }
+
+    .input-with-icon { position: relative; flex: 1; }
+    .input-with-icon i {
+      position: absolute; left: 22px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted); font-size: 1.05rem;
+      transition: color 0.2s; pointer-events: none;
+    }
+    .input-with-icon:focus-within i { color: var(--accent-green); }
+
+    #ingredient-input {
+      width: 100%;
+      padding: 16px 22px 16px 52px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-pill);
+      font-size: 1.05rem; font-family: inherit;
+      background: #fafafa; color: var(--text-dark);
+      transition: var(--transition);
+    }
+    #ingredient-input::placeholder { color: var(--text-muted); }
+    #ingredient-input:hover { border-color: #d0d0d0; }
+    #ingredient-input:focus {
+      outline: none;
+      border-color: var(--accent-green);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(76,175,80,0.15);
+    }
+
+    #search-button {
+      padding: 0 30px;
+      background: linear-gradient(135deg, var(--accent-green), var(--light-green));
+      color: #fff; border: none; border-radius: var(--radius-pill);
+      font-size: 1.05rem; font-weight: 600; letter-spacing: 0.3px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      white-space: nowrap;
+      box-shadow: var(--shadow-glow);
+      transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    #search-button::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s var(--ease);
+    }
+    #search-button:hover::before { transform: translateX(100%); }
+    #search-button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(76,175,80,0.38); }
+    #search-button:active { transform: translateY(0); }
+
+    .hint-text {
+      color: var(--text-light); font-size: 0.9rem;
+      padding-left: 6px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .hint-text::before { content: "💡"; font-size: 0.95rem; }
+
+    /* ============================================
+       FILTER SECTION
+       ============================================ */
+    .filter-section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px 30px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .filter-title {
+      font-size: 1.05rem; font-weight: 600; margin-bottom: 14px;
+      color: var(--primary-green);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .filter-options { display: flex; flex-wrap: wrap; gap: 10px; }
+    .filter-btn {
+      padding: 9px 18px;
+      background: #f2f2f2;
+      border: 2px solid transparent;
+      border-radius: var(--radius-pill);
+      color: var(--text-dark);
+      font-weight: 500; font-size: 0.92rem;
+      display: flex; align-items: center; gap: 8px;
+      transition: var(--transition);
+    }
+    .filter-btn:hover:not(.active) {
+      background: #e6e6e6; transform: translateY(-1px);
+    }
+    .filter-btn.active {
+      background: var(--accent-green); color: #fff;
+      box-shadow: var(--shadow-glow); transform: translateY(-1px);
+    }
+    .filter-btn i { font-size: 0.85rem; opacity: 0.85; }
+
+    /* ============================================
+       STATS
+       ============================================ */
+    .stats-section {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 24px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 8px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    .stat-box {
+      text-align: center; padding: 18px 15px;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s;
+    }
+    .stat-box:not(:last-child) { border-right: 1px solid var(--border); }
+    .stat-box:hover { background: #fafafa; }
+    .stat-number {
+      font-size: 2rem; font-weight: 700;
+      color: var(--primary-green); margin-bottom: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-label {
+      font-size: 0.9rem; color: var(--text-light);
+      font-weight: 500; letter-spacing: 0.2px;
+    }
+
+    /* ============================================
+       MAP
+       ============================================ */
+    .map-section { margin-bottom: 32px; }
+    #recipe-map {
+      height: 420px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      z-index: 1;
+    }
+    .map-pin {
+      width: 30px; height: 30px;
+      background: var(--accent-green);
+      border: 3px solid #fff;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .map-pin:hover {
+      transform: rotate(-45deg) scale(1.15);
+      background: var(--dark-green);
+    }
+    .leaflet-popup-content-wrapper {
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+    }
+    .leaflet-popup-content {
+      font-family: inherit;
+      margin: 12px 16px;
+      font-size: 0.9rem;
+    }
+    .leaflet-popup-content strong {
+      color: var(--primary-green);
+      display: block; margin-bottom: 4px;
+    }
+    .recipe.highlighted {
+      animation: highlightPulse 1.6s ease;
+      border-color: var(--accent-green) !important;
+    }
+    @keyframes highlightPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(76,175,80,0.7); }
+      70%  { box-shadow: 0 0 0 20px rgba(76,175,80,0); }
+      100% { box-shadow: var(--shadow-md); }
+    }
+
+    /* ============================================
+       SECTION TITLE
+       ============================================ */
+    .section-title {
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 22px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-title i { color: var(--accent-green); font-size: 1.25rem; }
+
+    /* ============================================
+       RECIPE GRID
+       ============================================ */
+    #recipe-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    .recipe {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.5s var(--ease) forwards;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.3s;
+      will-change: transform;
+    }
+    .recipe:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .recipe:nth-child(1) { animation-delay: 0.05s; }
+    .recipe:nth-child(2) { animation-delay: 0.10s; }
+    .recipe:nth-child(3) { animation-delay: 0.15s; }
+    .recipe:nth-child(4) { animation-delay: 0.20s; }
+    .recipe:nth-child(5) { animation-delay: 0.25s; }
+    .recipe:nth-child(6) { animation-delay: 0.30s; }
+    .recipe:nth-child(7) { animation-delay: 0.35s; }
+    .recipe:nth-child(8) { animation-delay: 0.40s; }
+
+    .recipe-badge {
+      position: absolute; top: 14px; right: 14px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      color: #fff; z-index: 2;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .recipe-badge.local { background: linear-gradient(135deg, #ffb74d, var(--local-tag)); }
+    .recipe-badge.api   { background: linear-gradient(135deg, #64b5f6, var(--api-tag)); }
+
+    .recipe-img-container {
+      height: 200px; overflow: hidden;
+      position: relative;
+      background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+    .recipe-img-container::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.15), transparent 50%);
+      pointer-events: none;
+    }
+    .recipe img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s var(--ease);
+      animation: none;
+    }
+    .recipe:hover img { transform: scale(1.08); }
+
+    .recipe-content {
+      padding: 20px 22px 22px;
+      flex: 1;
+      display: flex; flex-direction: column;
+      gap: 12px;
+    }
+    .recipe h3 {
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.35;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .recipe-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .recipe-tag {
+      background: #e8f5e9; color: var(--primary-green);
+      padding: 4px 11px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.2px;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .recipe-tag i { font-size: 0.7rem; }
+
+    .recipe button {
+      padding: 12px;
+      background: var(--primary-green); color: #fff;
+      border: none; border-radius: var(--radius-sm);
+      font-size: 0.95rem; font-weight: 600;
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: var(--transition);
+      margin-top: auto;
+    }
+    .recipe button:hover {
+      background: var(--dark-green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(29,64,49,0.3);
+    }
+    .recipe button:active { transform: translateY(0); }
+
+    /* ============================================
+       EMPTY / SKELETON STATES
+       ============================================ */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 70px 20px;
+      color: var(--text-light);
+    }
+    .no-results i { font-size: 3.5rem; margin-bottom: 18px; color: #ddd; display: block; }
+    .no-results h3 { font-size: 1.4rem; color: var(--text-dark); margin-bottom: 8px; }
+
+    #loading { display: none; text-align: center; padding: 40px; grid-column: 1 / -1; }
+    .loading-spinner {
+      width: 56px; height: 56px;
+      border: 5px solid rgba(76,175,80,0.15);
+      border-top-color: var(--accent-green);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 20px;
+    }
+    .skeleton-card {
+      opacity: 1 !important;
+      animation: none !important;
+      pointer-events: none;
+    }
+    .skeleton-img { height: 200px; background: #eee; }
+    .skeleton-line { background: #eee; border-radius: 4px; }
+    .shimmer {
+      background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+
+    /* ============================================
+       MODAL
+       ============================================ */
+    #recipe-modal {
+      position: fixed; inset: 0;
+      background: rgba(15,25,20,0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: center; justify-content: center;
+      z-index: 1000; padding: 20px;
+      animation: fadeIn 0.25s var(--ease);
+    }
+    #recipe-modal-content {
+      background: var(--card-bg);
+      padding: 32px;
+      width: 100%; max-width: 720px;
+      border-radius: var(--radius-lg);
+      text-align: left;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      animation: modalSlideIn 0.4s var(--ease);
+    }
+    #close-modal {
+      position: absolute; top: 18px; right: 18px;
+      font-size: 26px; line-height: 1;
+      cursor: pointer; color: var(--text-light);
+      background: transparent; border: none;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: var(--transition-fast);
+      z-index: 2;
+    }
+    #close-modal:hover {
+      color: var(--danger);
+      background: #fef2f2;
+      transform: rotate(90deg);
+    }
+
+    .modal-header {
+      display: flex; gap: 24px; margin-bottom: 24px;
+    }
+    .modal-img {
+      width: 180px; height: 180px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-md);
+      background: #eee;
+    }
+    .modal-title-section { flex: 1; min-width: 0; }
+    .modal-title-section h3 {
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 12px; line-height: 1.25;
+      padding-right: 30px;
+    }
+    .modal-meta {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      margin-bottom: 12px;
+    }
+    .modal-meta-item {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--text-light); font-size: 0.9rem;
+    }
+    .modal-meta-item i { color: var(--accent-green); }
+
+    .modal-section { margin-bottom: 22px; }
+    .modal-section h4 {
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--primary-green);
+      margin-bottom: 14px; padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    #modal-ingredients {
+      list-style: none;
+      display: grid; grid-template-columns: 1fr; gap: 8px;
+    }
+    #modal-ingredients li {
+      background: #f9faf9;
+      padding: 11px 16px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.95rem;
+      border-left: 3px solid transparent;
+      transition: var(--transition-fast);
+    }
+    #modal-ingredients li:hover {
+      background: #e8f5e9;
+      border-left-color: var(--accent-green);
+    }
+    #modal-ingredients li::before {
+      content: "✓";
+      color: var(--accent-green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    #modal-instructions {
+      line-height: 1.75;
+      padding: 16px;
+      background: #f9faf9;
+      border-radius: var(--radius-sm);
+      white-space: pre-line;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    /* Nutrition grid */
+    .nutrition-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      gap: 10px;
+    }
+    .nutrition-item {
+      background: #f9faf9;
+      border-radius: var(--radius-sm);
+      padding: 14px 10px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: var(--transition-fast);
+    }
+    .nutrition-item:hover {
+      background: #e8f5e9;
+      border-color: var(--accent-green);
+    }
+    .nutrition-value {
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--primary-green);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+    }
+    .nutrition-value small {
+      font-size: 0.7rem; font-weight: 500;
+      color: var(--text-light);
+      margin-left: 2px;
+    }
+    .nutrition-label {
+      font-size: 0.7rem; color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Health block */
+    .health-group { margin-bottom: 14px; }
+    .health-group:last-child { margin-bottom: 0; }
+    .health-group-title {
+      font-size: 0.9rem; font-weight: 700;
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .health-group-title.benefits { color: #2e7d32; }
+    .health-group-title.risks    { color: #c62828; }
+    .health-group ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .health-group li {
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .health-group.benefits li {
+      background: #e8f5e9;
+      border-left: 3px solid #2e7d32;
+    }
+    .health-group.risks li {
+      background: #ffebee;
+      border-left: 3px solid #c62828;
+    }
+    .health-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-top: 10px;
+    }
+    .health-tag {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem; font-weight: 600;
+      background: var(--primary-green); color: #fff;
+      letter-spacing: 0.3px;
+    }
+
+    .modal-actions {
+      display: flex; gap: 12px;
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .modal-actions button {
+      padding: 13px 24px;
+      border: none; border-radius: var(--radius-sm);
+      font-weight: 600; font-size: 0.95rem;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      flex: 1;
+      transition: var(--transition);
+    }
+    #close-modal-btn {
+      background: #f2f2f2; color: var(--text-dark);
+    }
+    #close-modal-btn:hover { background: #e4e4e4; }
+    #save-recipe-btn {
+      background: var(--accent-green); color: #fff;
+      box-shadow: var(--shadow-glow);
+    }
+    #save-recipe-btn:hover {
+      background: var(--light-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(76,175,80,0.38);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+      margin-top: 60px;
+      border-top-left-radius: var(--radius-lg);
+      border-top-right-radius: var(--radius-lg);
+    }
+    .footer-content {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 14px;
+    }
+    .footer-logo {
+      font-size: 1.5rem; font-weight: 700;
+      color: #ffcc00;
+      display: flex; align-items: center; gap: 10px;
+      filter: drop-shadow(0 2px 8px rgba(255,204,0,0.3));
+    }
+    .footer-links {
+      display: flex; flex-wrap: wrap;
+      gap: 24px; margin-top: 8px;
+    }
+    .footer-links a {
+      color: #c9d9d1; text-decoration: none;
+      font-size: 0.92rem;
+      display: flex; align-items: center; gap: 6px;
+      transition: var(--transition-fast);
+    }
+    .footer-links a:hover { color: #fff; transform: translateY(-1px); }
+    footer p { font-size: 0.9rem; color: #b8c9c1; }
+
+    /* ============================================
+       TOAST
+       ============================================ */
+    .toast {
+      position: fixed; bottom: 30px; right: 30px;
+      background: var(--primary-green); color: #fff;
+      padding: 14px 22px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      z-index: 2000;
+      opacity: 0; transform: translateY(20px);
+      transition: var(--transition);
+      font-weight: 500;
+      max-width: 320px;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast-error   { background: var(--danger); }
+    .toast-success { background: var(--accent-green); }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes modalSlideIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes shimmer {
+      from { background-position: 200% 0; }
+      to   { background-position: -200% 0; }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50%      { transform: translate(30px, -20px) scale(1.05); }
+    }
+    @keyframes gentleBounce {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      header { padding: 36px 0 32px; }
+      .logo h1 { font-size: 2.2rem; }
+      header p { font-size: 1rem; }
+
+      .search-section, .filter-section { padding: 20px; }
+      .search-container { flex-direction: column; }
+      #search-button { padding: 16px; }
+
+      .stats-section { grid-template-columns: 1fr; padding: 0; }
+      .stat-box { border-right: none !important; border-bottom: 1px solid var(--border); }
+      .stat-box:last-child { border-bottom: none; }
+
+      .modal-header { flex-direction: column; }
+      .modal-img { width: 100%; height: 220px; }
+      .modal-title-section h3 { padding-right: 0; }
+      #recipe-modal-content { padding: 24px; }
+
+      .filter-options { justify-content: center; }
+      #recipe-map { height: 320px; }
+      .nutrition-grid { grid-template-columns: repeat(3, 1fr); }
+      .toast { left: 20px; right: 20px; bottom: 20px; max-width: none; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 15px; }
+      .logo h1 { font-size: 1.9rem; }
+      #recipe-container { grid-template-columns: 1fr; gap: 20px; }
+      .modal-actions { flex-direction: column; }
+      .section-title { font-size: 1.3rem; }
+    }
+
+    /* ============================================
+       ACCESSIBILITY
+       ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media print {
+      header, footer, #search-button, .filter-section, .stats-section, .map-section {
+        display: none;
+      }
+      .recipe { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ============ HEADER ============ -->
+    <header>
+      <div class="logo">
+        <i class="fas fa-utensils"></i>
+        <h1>Hungry</h1>
+      </div>
+      <p>Discover delicious recipes based on ingredients you have at home</p>
+    </header>
+
+    <!-- ============ SEARCH ============ -->
+    <section class="search-section" aria-label="Ingredient search">
+      <h2 class="search-title"><i class="fas fa-search"></i> Find Your Next Meal</h2>
+      <div class="search-container">
+        <div class="input-with-icon">
+          <i class="fas fa-carrot"></i>
+          <input
+            type="text"
+            id="ingredient-input"
+            placeholder="Enter ingredients (e.g., chicken, rice, tomatoes)"
+            aria-label="Ingredients">
+        </div>
+        <button id="search-button" aria-label="Search recipes">
+          <i class="fas fa-search"></i> Search Recipes
+        </button>
+      </div>
+      <p class="hint-text">Tip: You can enter multiple ingredients separated by commas</p>
+    </section>
+
+    <!-- ============ FILTER ============ -->
+    <section class="filter-section" aria-label="Recipe filters">
+      <h3 class="filter-title"><i class="fas fa-filter"></i> Filter Recipes</h3>
+      <div class="filter-options">
+        <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> All Recipes</button>
+        <button class="filter-btn" data-filter="local"><i class="fas fa-home"></i> Local Recipes</button>
+        <button class="filter-btn" data-filter="api"><i class="fas fa-globe"></i> API Recipes</button>
+        <button class="filter-btn" data-filter="gari"><i class="fas fa-seedling"></i> Gari Recipes</button>
+        <button class="filter-btn" data-filter="soup"><i class="fas fa-bowl-food"></i> Soups</button>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <div class="stats-section">
+      <div class="stat-box">
+        <div class="stat-number" id="total-count">0</div>
+        <div class="stat-label">Total Recipes</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number" id="local-count">0</div>
+        <div class="stat-label">Local Recipes</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number" id="api-count">0</div>
+        <div class="stat-label">API Recipes</div>
+      </div>
+    </div>
+
+    <!-- ============ MAP ============ -->
+    <!-- <section class="map-section">
+      <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Recipe Origins</h2>
+      <div id="recipe-map"></div>
+    </section> -->
+
+    <!-- ============ RECIPES ============ -->
+    <h2 class="section-title"><i class="fas fa-book-open"></i> Discover Recipes</h2>
+    <section id="recipe-container" aria-live="polite"></section>
+
+    <div id="loading">
+      <div class="loading-spinner"></div>
+      <p>Searching for delicious recipes...</p>
+    </div>
+  </div>
+
+  <!-- ============ MODAL ============ -->
+  <div id="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="recipe-modal-content">
+      <button id="close-modal" aria-label="Close">&times;</button>
+
+      <div class="modal-header">
+        <img id="modal-image" src="" alt="" class="modal-img">
+        <div class="modal-title-section">
+          <h3 id="modal-title"></h3>
+          <div class="modal-meta">
+            <div class="modal-meta-item">
+              <i class="fas fa-tag"></i>
+              <span>Source: <span id="modal-source"></span></span>
+            </div>
+            <div class="modal-meta-item">
+              <i class="fas fa-clock"></i>
+              <span>Prep: <span id="modal-prep-time"></span></span>
+            </div>
+            <div class="modal-meta-item" id="modal-location-row" style="display:none">
+              <i class="fas fa-map-marker-alt"></i>
+              <span id="modal-location"></span>
+            </div>
+          </div>
+          <div id="modal-category" class="recipe-tag"></div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4><i class="fas fa-shopping-basket"></i> Ingredients</h4>
+        <ul id="modal-ingredients"></ul>
+      </div>
+
+      <div class="modal-section">
+        <h4><i class="fas fa-list-ol"></i> Instructions</h4>
+        <p id="modal-instructions"></p>
+      </div>
+
+      <div class="modal-section">
+        <h4><i class="fas fa-chart-pie"></i> Nutrition (per serving)</h4>
+        <div id="modal-nutrition" class="nutrition-grid"></div>
+      </div>
+
+      <div class="modal-section">
+        <h4><i class="fas fa-heart-pulse"></i> Health</h4>
+        <div id="modal-health"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="close-modal-btn"><i class="fas fa-times"></i> Close</button>
+        <button id="save-recipe-btn"><i class="fas fa-bookmark"></i> Save Recipe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo"><i class="fas fa-utensils"></i> Hungry</div>
+        <p>Find delicious recipes with what you have in your kitchen</p>
+        <div class="footer-links">
+          <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+          <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+          <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+          <a href="#"><i class="fas fa-file-contract"></i> Terms</a>
+        </div>
+        <p>&copy; 2024 Hungry Recipe Finder. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    /* ============================================
+       STATE
+       ============================================ */
+    const state = {
+      all: [],
+      filter: 'all',
+      favorites: JSON.parse(localStorage.getItem('recipeFavorites') || '[]'),
+    };
+
+    const placeholder =
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80';
+
+    const MEALDB_API = 'https://www.themealdb.com/api/json/v1/1';
+
+    let recipeMap = null;
+    let markerGroup = null;
+
+    /* ============================================
+       TOAST
+       ============================================ */
+    function toast(msg, type = 'success') {
+      const t = document.createElement('div');
+      t.className = `toast toast-${type}`;
+      t.textContent = msg;
+      document.body.appendChild(t);
+      requestAnimationFrame(() => t.classList.add('show'));
+      setTimeout(() => {
+        t.classList.remove('show');
+        setTimeout(() => t.remove(), 300);
+      }, 3000);
+    }
+
+    /* ============================================
+       SKELETONS
+       ============================================ */
+    function showSkeletons(n = 6) {
+      const c = document.getElementById('recipe-container');
+      c.innerHTML = '';
+      for (let i = 0; i < n; i++) {
+        const s = document.createElement('div');
+        s.className = 'recipe skeleton-card';
+        s.innerHTML = `
+          <div class="skeleton-img shimmer"></div>
+          <div class="recipe-content">
+            <div class="skeleton-line shimmer" style="height:22px;width:80%"></div>
+            <div class="skeleton-line shimmer" style="height:16px;width:60%;margin-top:8px"></div>
+            <div class="skeleton-line shimmer" style="height:42px;width:100%;margin-top:14px;border-radius:10px"></div>
+          </div>`;
+        c.appendChild(s);
+      }
+    }
+
+    /* ============================================
+       RENDER
+       ============================================ */
+    function render(recipes) {
+      const c = document.getElementById('recipe-container');
+      c.innerHTML = '';
+
+      if (!recipes.length) {
+        c.innerHTML = `
+          <div class="no-results">
+            <i class="fas fa-utensils"></i>
+            <h3>No recipes found</h3>
+            <p>Try a different ingredient or filter</p>
+          </div>`;
+        return;
+      }
+
+      recipes.forEach((r, i) => {
+        const el = document.createElement('div');
+        el.className = 'recipe';
+        el.dataset.id = r.id;
+        el.style.animationDelay = `${i * 50}ms`;
+
+        const locTag = r.location
+          ? `<span class="recipe-tag"><i class="fas fa-map-marker-alt"></i> ${r.location.country}</span>`
+          : '';
+
+        el.innerHTML = `
+          <div class="recipe-badge ${r.source}">${r.source === 'local' ? 'Local' : 'API'}</div>
+          <div class="recipe-img-container">
+            <img src="${r.image}" alt="${r.title}" loading="lazy"
+                 onerror="this.src='${placeholder}'">
+          </div>
+          <div class="recipe-content">
+            <h3>${r.title}</h3>
+            <div class="recipe-tags">
+              <span class="recipe-tag">${r.category || 'Main Dish'}</span>
+              ${locTag}
+            </div>
+            <button data-id="${r.id}" data-source="${r.source}">
+              <i class="fas fa-book-open"></i> View Recipe
+            </button>
+          </div>`;
+
+        el.querySelector('button').addEventListener('click', (e) =>
+          viewRecipe(e.currentTarget.dataset.id, e.currentTarget.dataset.source)
+        );
+        c.appendChild(el);
+      });
+
+      updateStats();
+    }
+
+    /* ============================================
+       STATS
+       ============================================ */
+    function updateStats() {
+      document.getElementById('total-count').textContent = state.all.length;
+      document.getElementById('local-count').textContent = state.all.filter(
+        (r) => r.source === 'local'
+      ).length;
+      document.getElementById('api-count').textContent = state.all.filter(
+        (r) => r.source === 'api'
+      ).length;
+    }
+
+    /* ============================================
+       FILTER
+       ============================================ */
+    function applyFilter(filter) {
+      state.filter = filter;
+      document.querySelectorAll('.filter-btn').forEach((b) =>
+        b.classList.toggle('active', b.dataset.filter === filter)
+      );
+
+      const map = {
+        all: () => true,
+        local: (r) => r.source === 'local',
+        api: (r) => r.source === 'api',
+        gari: (r) =>
+          r.title.toLowerCase().includes('gari') ||
+          (r.ingredients && r.ingredients.some((i) => String(i).toLowerCase().includes('gari'))),
+        soup: (r) =>
+          r.title.toLowerCase().includes('soup') ||
+          (r.category || '').toLowerCase().includes('soup'),
+      };
+      const filtered = state.all.filter(map[filter] || map.all);
+      render(filtered);
+      refreshMarkers(filtered);
+    }
+
+    /* ============================================
+       MAP
+       ============================================ */
+    function initMap(recipes) {
+      const el = document.getElementById('recipe-map');
+      if (!el || typeof L === 'undefined') return;
+      if (recipeMap) return;
+
+      recipeMap = L.map('recipe-map', {
+        scrollWheelZoom: false,
+        worldCopyJump: true,
+      }).setView([8.5, 3.5], 3);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 18,
+      }).addTo(recipeMap);
+
+      markerGroup = L.layerGroup().addTo(recipeMap);
+      refreshMarkers(recipes);
+    }
+
+    function createPinIcon() {
+      return L.divIcon({
+        className: 'map-pin',
+        iconSize: [30, 30],
+        iconAnchor: [15, 30],
+        popupAnchor: [0, -30],
+      });
+    }
+
+    function refreshMarkers(recipes) {
+      if (!markerGroup) return;
+      markerGroup.clearLayers();
+
+      const located = recipes.filter((r) => r.location && r.location.lat);
+      const bounds = [];
+
+      // Group by coordinates to jitter overlapping pins
+      const seen = {};
+
+      located.forEach((recipe) => {
+        const key = `${recipe.location.lat},${recipe.location.lng}`;
+        seen[key] = (seen[key] || 0) + 1;
+
+        // Jitter slightly so overlapping pins are clickable
+        const jitter = (seen[key] - 1) * 0.25;
+        const angle = (seen[key] * 137.5) % 360;
+        const lat = recipe.location.lat + jitter * Math.cos(angle * Math.PI / 180);
+        const lng = recipe.location.lng + jitter * Math.sin(angle * Math.PI / 180);
+
+        const marker = L.marker([lat, lng], { icon: createPinIcon() });
+
+        marker.bindPopup(`
+          <strong>${recipe.title}</strong>
+          <span style="color:#666;font-size:0.85rem">${recipe.location.country}</span>
+        `);
+
+        marker.on('click', () => {
+          const card = document.querySelector(`.recipe[data-id="${recipe.id}"]`);
+          if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.classList.remove('highlighted');
+            void card.offsetWidth;
+            card.classList.add('highlighted');
+            setTimeout(() => card.classList.remove('highlighted'), 1800);
+          }
+        });
+
+        marker.addTo(markerGroup);
+        bounds.push([lat, lng]);
+      });
+
+      if (bounds.length > 1) {
+        recipeMap.fitBounds(bounds, { padding: [40, 40], maxZoom: 6 });
+      } else if (bounds.length === 1) {
+        recipeMap.setView(bounds[0], 6);
+      }
+    }
+
+    /* ============================================
+       SEARCH (API)
+       ============================================ */
+    async function search() {
+      const input = document.getElementById('ingredient-input').value.trim();
+      if (!input) return toast('Enter an ingredient', 'error');
+
+      showSkeletons();
+      const loading = document.getElementById('loading');
+
+      try {
+        const response = await fetch(`${MEALDB_API}/filter.php?i=${encodeURIComponent(input)}`);
+        const data = await response.json();
+
+        if (data.meals) {
+          data.meals.forEach((meal) => {
+            if (!state.all.some((r) => String(r.id) === String(meal.idMeal) && r.source === 'api')) {
+              state.all.push({
+                id: meal.idMeal,
+                title: meal.strMeal,
+                image: meal.strMealThumb,
+                source: 'api',
+                category: 'Main Dish',
+                prepTime: '30-60 min',
+              });
+            }
+          });
+          applyFilter(state.filter);
+          toast(`Found ${data.meals.length} recipe${data.meals.length > 1 ? 's' : ''}`);
+        } else {
+          applyFilter(state.filter);
+          toast('No API matches found', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        toast('Search failed. Please try again.', 'error');
+        applyFilter(state.filter);
+      }
+    }
+
+    /* ============================================
+       VIEW RECIPE (MODAL)
+       ============================================ */
+    async function viewRecipe(id, source) {
+      let recipe = state.all.find(
+        (r) => String(r.id) === String(id) && r.source === source
+      );
+
+      // For API recipes without instructions, fetch full details
+      if (source === 'api' && recipe && !recipe.instructions) {
+        try {
+          const resp = await fetch(`${MEALDB_API}/lookup.php?i=${id}`);
+          const data = await resp.json();
+          if (data.meals && data.meals[0]) {
+            const meal = data.meals[0];
+            const ingredients = [];
+            for (let i = 1; i <= 20; i++) {
+              const ing = meal[`strIngredient${i}`];
+              const measure = meal[`strMeasure${i}`];
+              if (ing && ing.trim()) {
+                ingredients.push(`${measure || ''} ${ing}`.trim());
+              }
+            }
+            recipe = {
+              ...recipe,
+              ingredients,
+              instructions: meal.strInstructions,
+              category: meal.strCategory || recipe.category,
+              location: recipe.location || {
+                country: meal.strArea || 'International',
+                lat: null,
+                lng: null,
+              },
+            };
+          }
+        } catch (err) {
+          console.error(err);
+          toast('Could not load recipe details', 'error');
+          return;
+        }
+      }
+
+      if (!recipe) return toast('Recipe not found', 'error');
+
+      // Header
+      document.getElementById('modal-title').textContent = recipe.title;
+      document.getElementById('modal-image').src = recipe.image || placeholder;
+      document.getElementById('modal-image').alt = recipe.title;
+      document.getElementById('modal-source').textContent =
+        recipe.source === 'local' ? 'Local Recipe' : 'TheMealDB API';
+      document.getElementById('modal-category').textContent = recipe.category || 'Main Dish';
+      document.getElementById('modal-prep-time').textContent = recipe.prepTime || '30-45 min';
+
+      // Location row
+      const locRow = document.getElementById('modal-location-row');
+      if (recipe.location && recipe.location.country) {
+        locRow.style.display = 'flex';
+        document.getElementById('modal-location').textContent = recipe.location.country;
+      } else {
+        locRow.style.display = 'none';
+      }
+
+      // Ingredients
+      const list = document.getElementById('modal-ingredients');
+      list.innerHTML = '';
+      (recipe.ingredients || []).forEach((ing) => {
+        const li = document.createElement('li');
+        li.textContent = ing;
+        list.appendChild(li);
+      });
+
+      // Instructions
+      document.getElementById('modal-instructions').textContent =
+        recipe.instructions || 'Instructions unavailable.';
+
+      // Nutrition
+      renderNutrition(recipe.nutrition);
+
+      // Health
+      renderHealth(recipe.health);
+
+      // Save button
+      document.getElementById('save-recipe-btn').onclick = () => saveRecipe(recipe);
+
+      // Show modal
+      document.getElementById('recipe-modal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    /* ============================================
+       NUTRITION RENDER
+       ============================================ */
+    function renderNutrition(n) {
+      const el = document.getElementById('modal-nutrition');
+      if (!el) return;
+
+      if (!n) {
+        el.innerHTML = `<p style="color:#666;font-size:0.9rem;grid-column:1/-1">Nutrition data not available for this recipe.</p>`;
+        return;
+      }
+
+      const items = [
+        { label: 'Calories', value: n.calories, unit: 'kcal' },
+        { label: 'Protein', value: n.protein, unit: 'g' },
+        { label: 'Carbs', value: n.carbs, unit: 'g' },
+        { label: 'Fat', value: n.fat, unit: 'g' },
+        { label: 'Fiber', value: n.fiber, unit: 'g' },
+        { label: 'Sodium', value: n.sodium, unit: 'mg' },
+      ];
+
+      el.innerHTML = items
+        .filter((i) => i.value != null)
+        .map(
+          (i) => `
+          <div class="nutrition-item">
+            <div class="nutrition-value">${i.value}<small>${i.unit}</small></div>
+            <div class="nutrition-label">${i.label}</div>
+          </div>`
+        )
+        .join('');
+    }
+
+    /* ============================================
+       HEALTH RENDER
+       ============================================ */
+    function renderHealth(h) {
+      const el = document.getElementById('modal-health');
+      if (!el) return;
+
+      if (!h) {
+        el.innerHTML = `<p style="color:#666;font-size:0.9rem">Health data not available.</p>`;
+        return;
+      }
+
+      let html = '';
+
+      if (h.benefits && h.benefits.length) {
+        html += `
+          <div class="health-group benefits">
+            <div class="health-group-title benefits">
+              <i class="fas fa-circle-check"></i> Benefits
+            </div>
+            <ul>${h.benefits.map((b) => `<li>${b}</li>`).join('')}</ul>
+          </div>`;
+      }
+
+      if (h.risks && h.risks.length) {
+        html += `
+          <div class="health-group risks">
+            <div class="health-group-title risks">
+              <i class="fas fa-triangle-exclamation"></i> Watch out for
+            </div>
+            <ul>${h.risks.map((r) => `<li>${r}</li>`).join('')}</ul>
+          </div>`;
+      }
+
+      if (h.tags && h.tags.length) {
+        html += `<div class="health-tags">${h.tags
+          .map((t) => `<span class="health-tag">${t}</span>`)
+          .join('')}</div>`;
+      }
+
+      el.innerHTML = html || `<p style="color:#666;font-size:0.9rem">No details available.</p>`;
+    }
+
+    /* ============================================
+       SAVE / CLOSE
+       ============================================ */
+    function saveRecipe(recipe) {
+      const exists = state.favorites.some(
+        (f) => String(f.id) === String(recipe.id) && f.source === recipe.source
+      );
+      if (exists) return toast('Already in favorites', 'error');
+
+      state.favorites.push({
+        id: recipe.id,
+        source: recipe.source,
+        title: recipe.title,
+        image: recipe.image,
+        savedAt: new Date().toISOString(),
+      });
+      localStorage.setItem('recipeFavorites', JSON.stringify(state.favorites));
+      toast(`"${recipe.title}" saved!`);
+    }
+
+    function closeModal() {
+      document.getElementById('recipe-modal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    /* ============================================
+       INIT
+       ============================================ */
+    async function initApp() {
+      showSkeletons();
+
+      // Load local recipes
+      try {
+        const response = await fetch('recipes.json');
+        if (!response.ok) throw new Error('Failed to load recipes.json');
+        const data = await response.json();
+
+        state.all = (data.recipes || []).map((r) => ({
+          ...r,
+          id: `local-${r.id}`, // unique id prefix
+          source: 'local',
+          category:
+            r.category ||
+            (r.title.toLowerCase().includes('soup')
+              ? 'Soup'
+              : r.title.toLowerCase().includes('salad')
+              ? 'Salad'
+              : r.title.toLowerCase().includes('rice')
+              ? 'Rice Dish'
+              : r.title.toLowerCase().includes('gari')
+              ? 'Gari Dish'
+              : 'Main Dish'),
+          prepTime: '30-45 min',
+          instructions: Array.isArray(r.instructions)
+            ? r.instructions.join('\n')
+            : r.instructions,
+        }));
+
+        render(state.all);
+        initMap(state.all);
+      } catch (err) {
+        console.error(err);
+        toast('Could not load local recipes', 'error');
+        document.getElementById('recipe-container').innerHTML = `
+          <div class="no-results">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>Could not load recipes</h3>
+            <p>Make sure recipes.json is in the same folder as index.html</p>
+          </div>`;
+      }
+
+      // Filters
+      document.querySelectorAll('.filter-btn').forEach((b) =>
+        b.addEventListener('click', () => applyFilter(b.dataset.filter))
+      );
+
+      // Search
+      document.getElementById('search-button').addEventListener('click', search);
+      document.getElementById('ingredient-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          search();
+        }
+      });
+
+      // Modal controls
+      document.getElementById('close-modal').addEventListener('click', closeModal);
+      document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+      document.getElementById('recipe-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'recipe-modal') closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>

@@ -1,0 +1,704 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "title": "Egusi Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRu6PY8FVm-eU0ouuNjwIEHwjc_-QhiXEF1MlHN0-Tnw&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 420, "protein": 18, "carbs": 12, "fat": 34, "fiber": 6, "sodium": 480 },
+      "health": {
+        "benefits": ["High in healthy fats from palm oil", "Egusi seeds are rich in protein and omega-3", "Leafy greens provide iron and vitamins"],
+        "risks": ["High in calories", "Palm oil is high in saturated fat — consume in moderation"],
+        "tags": ["high-fat", "high-protein", "gluten-free"]
+      },
+      "ingredients": ["2 cups egusi seeds", "4 cups spinach (or ugu leaves)", "1/2 cup palm oil", "1 onion (chopped)", "1-2 teaspoons pepper (to taste)", "Salt to taste"],
+      "instructions": ["Step 1: Blend the egusi seeds into a fine powder.", "Step 2: Heat palm oil in a pot and add chopped onions; sauté until translucent.", "Step 3: Stir in the blended egusi and fry for a few minutes.", "Step 4: Add water gradually, stirring to avoid lumps, and let it simmer.", "Step 5: Add the spinach, pepper, and salt; cook for an additional 10 minutes."]
+    },
+    {
+      "id": 2,
+      "title": "Jollof Rice",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNgO-xJQZJqixl6MbE05eYLZDviakYQ9eDwe9nTqWkgg&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 350, "protein": 8, "carbs": 62, "fat": 8, "fiber": 3, "sodium": 520 },
+      "health": {
+        "benefits": ["Tomatoes provide lycopene (antioxidant)", "Rice gives quick energy", "Bell peppers are rich in vitamin C"],
+        "risks": ["High in carbohydrates — watch portion size if diabetic", "Can be high in sodium from seasoning cubes"],
+        "tags": ["high-carb", "vegetarian-friendly"]
+      },
+      "ingredients": ["3 cups rice", "4 tomatoes (blended)", "1 onion (chopped)", "2 bell peppers (blended)", "1 teaspoon thyme", "1-2 teaspoons curry powder", "Salt and pepper to taste", "2-3 cups chicken or vegetable broth"],
+      "instructions": ["Step 1: In a pot, sauté chopped onions until golden.", "Step 2: Add blended tomatoes and bell peppers; cook until reduced.", "Step 3: Stir in thyme, curry powder, salt, and pepper.", "Step 4: Add rice and mix well with the sauce.", "Step 5: Pour in the broth, cover, and simmer on low heat until rice is cooked."]
+    },
+    {
+      "id": 3,
+      "title": "Gari Fortor",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQStj2VlFCkZElvom7WVaox4EXN3odudleay8t5cEXIqw&s=10",
+      "location": { "lat": 7.9465, "lng": -1.0232, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 380, "protein": 12, "carbs": 55, "fat": 14, "fiber": 8, "sodium": 340 },
+      "health": {
+        "benefits": ["Beans provide plant protein and fiber", "Gari is gluten-free", "Palm oil contains vitamin A"],
+        "risks": ["High in carbs", "Processed gari is low in micronutrients"],
+        "tags": ["gluten-free", "high-fiber", "vegetarian"]
+      },
+      "ingredients": ["1 cup gari", "1 cup cooked beans", "1 onion (chopped)", "2 tablespoons palm oil", "Salt to taste"],
+      "instructions": ["Step 1: In a pan, heat palm oil and sauté chopped onions until soft.", "Step 2: Add cooked beans and stir for a few minutes.", "Step 3: Gradually add gari while mixing until well combined.", "Step 4: Season with salt and serve warm."]
+    },
+    {
+      "id": 4,
+      "title": "Gari with Pepper Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDzqJF2CfaM2AB5zQVHklRZhDsRqlnBgNCYGobw4XC9A&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 310, "protein": 22, "carbs": 38, "fat": 7, "fiber": 4, "sodium": 620 },
+      "health": {
+        "benefits": ["High protein from chicken/fish stock", "Pepper soup spices may have anti-inflammatory properties", "Warming and hydrating"],
+        "risks": ["High sodium content", "Very spicy — avoid if sensitive to heat"],
+        "tags": ["high-protein", "spicy", "low-fat"]
+      },
+      "ingredients": ["1 cup gari", "4 cups chicken or fish stock", "2-3 tablespoons pepper soup spice mix", "1 onion (sliced)", "Salt to taste"],
+      "instructions": ["Step 1: In a pot, bring chicken or fish stock to a boil.", "Step 2: Add sliced onions and pepper soup spice mix; simmer for 10 minutes.", "Step 3: Gradually sprinkle gari into the pot while stirring.", "Step 4: Cook until thickened, then season with salt and serve hot."]
+    },
+    {
+      "id": 5,
+      "title": "Gari and Groundnut",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkPDhzQ3I2evPwopARrVOf0xFEcW9DvZbraIA272fzlw&s=10",
+      "location": { "lat": 7.9465, "lng": -1.0232, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 450, "protein": 14, "carbs": 58, "fat": 18, "fiber": 6, "sodium": 120 },
+      "health": {
+        "benefits": ["Groundnuts are rich in healthy fats and protein", "Good energy snack", "Contains vitamin E"],
+        "risks": ["High in calories", "Added sugar may spike blood glucose", "Groundnut allergies common"],
+        "tags": ["high-calorie", "vegetarian", "snack"]
+      },
+      "ingredients": ["1 cup gari", "1/2 cup groundnuts (peanuts)", "Sugar or honey to taste", "Water or milk"],
+      "instructions": ["Step 1: In a bowl, mix gari and groundnuts.", "Step 2: Add sugar or honey to taste.", "Step 3: Pour water or milk over the mixture and stir until combined.", "Step 4: Let it sit for a few minutes to soften before serving."]
+    },
+    {
+      "id": 6,
+      "title": "Gari and Fish Stew",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeXw7KW7kW52KD62tpK3uUNIkyeMpwFzF5l7YnK3uZpg&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 410, "protein": 28, "carbs": 42, "fat": 12, "fiber": 3, "sodium": 580 },
+      "health": {
+        "benefits": ["Fish provides omega-3 fatty acids", "High protein for muscle building", "Tomato sauce adds antioxidants"],
+        "risks": ["Fried fish may be high in oil", "Watch sodium from seasoning"],
+        "tags": ["high-protein", "omega-3", "gluten-free"]
+      },
+      "ingredients": ["1 cup gari", "2 cups fish (cleaned and cut into pieces)", "1 onion (chopped)", "1 cup tomato sauce", "Salt and pepper to taste"],
+      "instructions": ["Step 1: In a pot, sauté chopped onions until golden.", "Step 2: Add fish pieces and cook until lightly browned.", "Step 3: Stir in tomato sauce, salt, and pepper; simmer for 10 minutes.", "Step 4: Prepare gari by soaking it in hot water.", "Step 5: Serve the fish stew over the gari."]
+    },
+    {
+      "id": 7,
+      "title": "Gari with Milk",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXZxgu2B5jfkmDiII-D-10Q9bH99V5ADnDR3lJnYT1Yg&s=10",
+      "location": { "lat": 7.9465, "lng": -1.0232, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 320, "protein": 9, "carbs": 52, "fat": 7, "fiber": 2, "sodium": 90 },
+      "health": {
+        "benefits": ["Milk provides calcium and vitamin D", "Quick energy source", "Easy to digest"],
+        "risks": ["Added sugar is high", "Low in protein compared to main meals", "Not suitable for lactose intolerance"],
+        "tags": ["vegetarian", "high-carb", "breakfast"]
+      },
+      "ingredients": ["1 cup gari", "1-2 cups milk", "Sugar to taste", "Cinnamon (optional)"],
+      "instructions": ["Step 1: In a bowl, mix gari with sugar.", "Step 2: Pour milk over the gari and stir to combine.", "Step 3: Add a sprinkle of cinnamon if desired.", "Step 4: Let it sit for a few minutes before serving."]
+    },
+    {
+      "id": 8,
+      "title": "Bitterleaf Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB8v37Dg5o5iqk2ynWTvE1hpUFT2mPk4s-S5mT3cCGOg&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 380, "protein": 26, "carbs": 14, "fat": 26, "fiber": 9, "sodium": 490 },
+      "health": {
+        "benefits": ["Bitterleaf is rich in vitamins and antioxidants", "Groundnut paste provides protein and healthy fats", "Traditionally used to aid digestion"],
+        "risks": ["High fat content", "High in calories if eaten in large quantities"],
+        "tags": ["high-fiber", "high-protein", "traditional"]
+      },
+      "ingredients": ["2 cups bitterleaf", "1 cup groundnut paste", "1 onion (chopped)", "2 cups meat or fish", "Salt and seasoning cubes"],
+      "instructions": ["Step 1: Rinse and squeeze bitterleaf to reduce bitterness.", "Step 2: In a pot, sauté onions until translucent.", "Step 3: Add meat or fish and cook until tender.", "Step 4: Stir in groundnut paste, salt, and seasoning cubes.", "Step 5: Add water to achieve desired consistency, and simmer for 20 minutes."]
+    },
+    {
+      "id": 9,
+      "title": "Nkwobi",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR1f67gbOKtklQSteD2UsNaZNnkGXkSoMYjkILn-NJiQ&s=10",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 460, "protein": 32, "carbs": 8, "fat": 35, "fiber": 2, "sodium": 610 },
+      "health": {
+        "benefits": ["High collagen from cow foot — supports joint health", "Crayfish is rich in protein and minerals", "Palm oil has vitamin A and E"],
+        "risks": ["High in saturated fat", "Very high in calories", "High sodium"],
+        "tags": ["high-protein", "high-fat", "high-calorie"]
+      },
+      "ingredients": ["2 cups cow foot (cooked)", "1/2 cup palm oil", "1 onion (chopped)", "2 tablespoons ground crayfish", "Pepper to taste", "Salt to taste"],
+      "instructions": ["Step 1: In a pot, heat palm oil and sauté chopped onions.", "Step 2: Add cooked cow foot and stir to combine.", "Step 3: Mix in ground crayfish, pepper, and salt; simmer for 10 minutes.", "Step 4: Serve in a bowl, often garnished with sliced onions."]
+    },
+    {
+      "id": 10,
+      "title": "Ofada Rice and Ayamase",
+      "image": "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=800",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "South-West Nigeria" },
+      "nutrition": { "calories": 480, "protein": 20, "carbs": 55, "fat": 22, "fiber": 5, "sodium": 540 },
+      "health": {
+        "benefits": ["Ofada rice is unpolished and high in fiber", "Assorted meat provides protein and iron", "Green peppers are rich in vitamin C"],
+        "risks": ["Very high in calories", "Palm oil is high in saturated fat", "High sodium"],
+        "tags": ["high-calorie", "high-fiber", "high-protein"]
+      },
+      "ingredients": ["2 cups Ofada rice", "4 green bell peppers", "1 onion", "1 cup palm oil", "1 cup assorted meat", "Salt and seasoning to taste"],
+      "instructions": ["Step 1: Rinse and cook Ofada rice in boiling water until soft.", "Step 2: Blend green peppers and onion into a smooth paste.", "Step 3: In a pot, heat palm oil and add the blended mixture; cook for 10 minutes.", "Step 4: Add assorted meat, salt, and seasoning; simmer for another 10 minutes.", "Step 5: Serve the sauce over cooked Ofada rice."]
+    },
+    {
+      "id": 11,
+      "title": "Pounded Yam and Egusi Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkjsHJxFjiTAhXtv7otfoT9Lwru0xaT4mcn_ebTUyAkg&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 620, "protein": 20, "carbs": 78, "fat": 26, "fiber": 8, "sodium": 460 },
+      "health": {
+        "benefits": ["Yam is a good source of potassium and vitamin C", "Egusi seeds provide protein", "Very filling"],
+        "risks": ["Extremely high in calories", "High in carbohydrates", "High fat from palm oil"],
+        "tags": ["high-carb", "high-calorie", "traditional"]
+      },
+      "ingredients": ["2 cups yam", "2 cups egusi seeds", "1/2 cup palm oil", "1 onion (chopped)", "Salt to taste"],
+      "instructions": ["Step 1: Boil yam until soft, then pound until smooth.", "Step 2: Blend egusi seeds into a fine powder.", "Step 3: Heat palm oil, add onions, and sauté until translucent.", "Step 4: Stir in blended egusi, and cook for a few minutes.", "Step 5: Gradually add water and simmer until thickened; serve with pounded yam."]
+    },
+    {
+      "id": 12,
+      "title": "Okra Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEfwwUFOfMGZ4GOrY9aYv2ZdYwUREnglr0mj-viHsRlQ&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 290, "protein": 24, "carbs": 14, "fat": 16, "fiber": 10, "sodium": 520 },
+      "health": {
+        "benefits": ["Okra is high in soluble fiber — good for digestion", "Low in calories", "Rich in vitamin K and folate"],
+        "risks": ["Okra can reduce absorption of some medicines — space out medication"],
+        "tags": ["high-fiber", "low-calorie", "high-protein"]
+      },
+      "ingredients": ["2 cups okra (sliced)", "1/2 cup palm oil", "1 onion (chopped)", "2 cups meat or fish", "Salt and seasoning to taste"],
+      "instructions": ["Step 1: In a pot, heat palm oil and sauté onions until soft.", "Step 2: Add meat or fish and cook until tender.", "Step 3: Stir in sliced okra and cook for 10 minutes.", "Step 4: Season with salt and seasoning; serve hot."]
+    },
+    {
+      "id": 13,
+      "title": "Moi Moi",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcvGKiloDcsKQ36CGr6HvOz0ibEwNYB-3WRliOWCXsag&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 280, "protein": 16, "carbs": 30, "fat": 12, "fiber": 9, "sodium": 380 },
+      "health": {
+        "benefits": ["Black-eyed peas are high in protein and fiber", "Steamed — no added oil", "Rich in folate and potassium"],
+        "risks": ["Some recipes add a lot of palm oil — check portion", "May be high in sodium if over-seasoned"],
+        "tags": ["steamed", "high-fiber", "high-protein", "vegetarian-friendly"]
+      },
+      "ingredients": ["2 cups black-eyed peas (soaked and peeled)", "1 onion (chopped)", "1 bell pepper", "2 tablespoons palm oil", "Salt and seasoning to taste"],
+      "instructions": ["Step 1: Blend soaked black-eyed peas, onion, and bell pepper into a smooth paste.", "Step 2: Stir in palm oil, salt, and seasoning.", "Step 3: Pour the mixture into leaves or bowls.", "Step 4: Steam for about 45 minutes until firm.", "Step 5: Serve warm as a side dish or snack."]
+    },
+    {
+      "id": 14,
+      "title": "Peppered Chicken",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRouKN3I8_CSQC-1-gpO2wqEvCasJiy6UAfjmlbeyRDXQ&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 390, "protein": 34, "carbs": 6, "fat": 26, "fiber": 1, "sodium": 560 },
+      "health": {
+        "benefits": ["High protein — great for muscle repair", "Pepper has capsaicin which may boost metabolism", "Low carb"],
+        "risks": ["Fried in palm oil — high saturated fat", "Spicy — may irritate ulcers"],
+        "tags": ["high-protein", "low-carb", "spicy"]
+      },
+      "ingredients": ["2 lbs chicken (cut into pieces)", "1 onion (chopped)", "2-3 tablespoons pepper sauce", "1/2 cup palm oil", "Salt and seasoning to taste"],
+      "instructions": ["Step 1: Marinate chicken with salt, pepper sauce, and chopped onions for at least 30 minutes.", "Step 2: In a pot, heat palm oil and fry the marinated chicken until golden.", "Step 3: Add more chopped onions and simmer for 10-15 minutes.", "Step 4: Adjust seasoning if necessary and serve hot."]
+    },
+    {
+      "id": 15,
+      "title": "Efo Riro",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4UufAjiWWVltm7UzNJvupVqjbZc8SHtdSzpbEL9Lxbg&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 340, "protein": 20, "carbs": 12, "fat": 24, "fiber": 7, "sodium": 480 },
+      "health": {
+        "benefits": ["Spinach is packed with iron and vitamins A, C, K", "Low in carbs", "Fiber supports gut health"],
+        "risks": ["High in fat from palm oil", "Spinach can reduce calcium absorption if eaten in huge amounts"],
+        "tags": ["high-iron", "low-carb", "high-fiber"]
+      },
+      "ingredients": ["2 cups spinach or kale (chopped)", "1/2 cup palm oil", "1 onion (chopped)", "1 bell pepper (blended)", "Salt and seasoning to taste"],
+      "instructions": ["Step 1: In a pot, heat palm oil and sauté onions until soft.", "Step 2: Add blended bell pepper and cook for 10 minutes.", "Step 3: Stir in chopped spinach and cook until wilted.", "Step 4: Season with salt and seasoning; serve hot."]
+    },
+    {
+      "id": 16,
+      "title": "Akara",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0HwJFXHyId1V1WOwmvYm0ntD0oQ5IA_aQmDmU_hE8hg&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 260, "protein": 12, "carbs": 24, "fat": 14, "fiber": 6, "sodium": 280 },
+      "health": {
+        "benefits": ["Plant-based protein from black-eyed peas", "Good source of fiber", "Popular breakfast option"],
+        "risks": ["Deep fried — high in oil", "High in calories if eaten in large quantities"],
+        "tags": ["vegetarian", "fried", "breakfast"]
+      },
+      "ingredients": ["2 cups black-eyed peas (soaked and peeled)", "1 onion (chopped)", "2-3 peppers (chopped)", "Salt to taste", "Oil for frying"],
+      "instructions": ["Step 1: Blend soaked black-eyed peas with onion and peppers.", "Step 2: Pour the mixture into a bowl and season with salt.", "Step 3: Heat oil in a frying pan.", "Step 4: Scoop the mixture and fry until golden brown on both sides.", "Step 5: Serve warm as a snack or breakfast."]
+    },
+    {
+      "id": 17,
+      "title": "Catfish Pepper Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeP6Ql81KDY8Bg2kCk6i13vLvMlbnX2IGyzw4gUrLfPA&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 240, "protein": 30, "carbs": 6, "fat": 10, "fiber": 1, "sodium": 680 },
+      "health": {
+        "benefits": ["High protein, low carb", "Fish provides omega-3", "Warming and hydrating — traditionally eaten when sick"],
+        "risks": ["Very high in sodium", "Extremely spicy"],
+        "tags": ["high-protein", "low-carb", "spicy"]
+      },
+      "ingredients": ["1 whole catfish (cleaned)", "2-3 tablespoons pepper soup spice mix", "1 onion (sliced)", "Salt to taste", "Water"],
+      "instructions": ["Step 1: In a pot, add sliced onions and water; bring to a boil.", "Step 2: Add catfish and pepper soup spice; simmer for 20 minutes.", "Step 3: Season with salt and adjust spice to taste.", "Step 4: Serve hot with sides."]
+    },
+    {
+      "id": 18,
+      "title": "Banga Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQODS6bOgTZXsQKo6mzZx_8npHgmbIQcrq7PzhC-Yzd8A&s=10",
+      "location": { "lat": 6.3350, "lng": 5.6037, "country": "Nigeria", "region": "South-South Nigeria" },
+      "nutrition": { "calories": 420, "protein": 24, "carbs": 10, "fat": 32, "fiber": 5, "sodium": 560 },
+      "health": {
+        "benefits": ["Palm nut extract is rich in vitamin A and E", "Assorted meats provide protein and iron", "Banga spice aids digestion"],
+        "risks": ["Very high in fat", "High in calories", "High sodium"],
+        "tags": ["high-fat", "high-calorie", "traditional"]
+      },
+      "ingredients": ["2 cups palm nuts (or banga paste)", "1 onion (chopped)", "2 cups assorted meats", "1-2 tablespoons banga spice mix", "Salt to taste"],
+      "instructions": ["Step 1: Boil palm nuts in water, then extract the oil.", "Step 2: In a pot, sauté onions and assorted meats until tender.", "Step 3: Stir in extracted palm oil and banga spice; simmer for 20 minutes.", "Step 4: Serve with rice or starch."]
+    },
+    {
+      "id": 19,
+      "title": "Plantain Fufu",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDn7cySuNXG4yGr1gugX0FH8D0wtS_QLu6bHxFbEW5HQ&s=10",
+      "location": { "lat": 7.9465, "lng": -1.0232, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 280, "protein": 3, "carbs": 68, "fat": 1, "fiber": 6, "sodium": 15 },
+      "health": {
+        "benefits": ["Naturally gluten-free", "Rich in potassium and vitamin B6", "No added fat"],
+        "risks": ["High in carbs — not ideal for diabetics in large amounts", "Low in protein"],
+        "tags": ["gluten-free", "high-carb", "low-fat", "vegan"]
+      },
+      "ingredients": ["4 ripe plantains (peeled)", "Water as needed"],
+      "instructions": ["Step 1: Boil peeled plantains until soft.", "Step 2: Drain and mash until smooth and stretchy.", "Step 3: Serve warm with soups or stews."]
+    },
+    {
+      "id": 20,
+      "title": "Beans and Plantain Porridge",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTQZIb8c9ZOyKDtOIbAcYT4I3AnNY5OE-ngiVP6Osa7g&s=10",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 380, "protein": 16, "carbs": 62, "fat": 6, "fiber": 12, "sodium": 320 },
+      "health": {
+        "benefits": ["Excellent fiber from beans", "Plant-based protein", "Plantains add potassium"],
+        "risks": ["High in carbohydrates", "May cause bloating for some"],
+        "tags": ["high-fiber", "vegetarian", "vegan"]
+      },
+      "ingredients": ["2 cups beans (washed)", "2 ripe plantains (peeled and sliced)", "1 onion (chopped)", "Salt to taste", "Water"],
+      "instructions": ["Step 1: Boil beans in water until tender.", "Step 2: Add sliced plantains and chopped onions; cook until plantains are soft.", "Step 3: Season with salt and stir to combine.", "Step 4: Serve warm."]
+    },
+    {
+      "id": 21,
+      "title": "Ewedu Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyK6Y2-s9H0z_1gwtz3ZIT5T1_PBZQLut5G__Oca9UTw&s=10",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "South-West Nigeria" },
+      "nutrition": { "calories": 180, "protein": 8, "carbs": 10, "fat": 12, "fiber": 8, "sodium": 420 },
+      "health": {
+        "benefits": ["Ewedu leaves are high in vitamin A, C, and iron", "Very low in calories", "High fiber aids digestion"],
+        "risks": ["Crayfish may trigger shellfish allergies", "Low protein on its own"],
+        "tags": ["low-calorie", "high-fiber", "high-iron"]
+      },
+      "ingredients": ["2 cups ewedu leaves", "1/2 cup ground crayfish", "1/2 cup palm oil", "Salt and seasoning to taste"],
+      "instructions": ["Step 1: Wash ewedu leaves thoroughly.", "Step 2: In a pot, add ewedu leaves and cook with a little water until soft.", "Step 3: Stir in ground crayfish, palm oil, salt, and seasoning; simmer for 10 minutes.", "Step 4: Serve with pounded yam or rice."]
+    },
+    {
+      "id": 22,
+      "title": "Nigerian Salad",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmf3IqBKojtMkvyvGKu9pW0UpLDR_TBas3-lLnHpwug&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 310, "protein": 12, "carbs": 28, "fat": 18, "fiber": 5, "sodium": 380 },
+      "health": {
+        "benefits": ["Fresh vegetables provide vitamins and minerals", "Eggs add protein", "Macaroni gives energy"],
+        "risks": ["Mayonnaise is high in fat and calories", "Macaroni adds carbs"],
+        "tags": ["vegetarian", "high-fiber", "cold-dish"]
+      },
+      "ingredients": ["1 cup cooked macaroni", "2 cups mixed vegetables (carrots, peas, etc.)", "1 onion (chopped)", "2-3 boiled eggs (sliced)", "Mayonnaise to taste"],
+      "instructions": ["Step 1: In a large bowl, mix cooked macaroni and vegetables.", "Step 2: Stir in chopped onions and mayonnaise.", "Step 3: Top with sliced boiled eggs.", "Step 4: Serve chilled or at room temperature."]
+    },
+    {
+      "id": 23,
+      "title": "Efo Elegusi",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrxCqVti43cSCMtDZXHArnkhEw8wuOVWBWOh2LCDZzJA&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 360, "protein": 18, "carbs": 14, "fat": 26, "fiber": 7, "sodium": 460 },
+      "health": {
+        "benefits": ["Combines protein-rich egusi with iron-rich spinach", "Antioxidants from leafy greens", "Good source of vitamin K"],
+        "risks": ["High fat from palm oil", "High calories if large portion"],
+        "tags": ["high-iron", "high-fat", "traditional"]
+      },
+      "ingredients": ["2 cups spinach or kale", "1 cup egusi seeds", "1/2 cup palm oil", "1 onion (chopped)", "Salt and pepper to taste"],
+      "instructions": ["Step 1: Blend egusi seeds into a powder.", "Step 2: In a pot, heat palm oil and sauté onions.", "Step 3: Add blended egusi and stir-fry for 5 minutes.", "Step 4: Add chopped spinach, salt, and pepper; simmer until spinach wilts."]
+    },
+    {
+      "id": 24,
+      "title": "Kelewele",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Bdib8zjHO7x001rd2jHp6EzEgar02amtOqe_ay7UOA&s=10",
+      "location": { "lat": 5.6037, "lng": -0.1870, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 240, "protein": 2, "carbs": 42, "fat": 8, "fiber": 4, "sodium": 180 },
+      "health": {
+        "benefits": ["Ginger is anti-inflammatory", "Plantains provide potassium", "Cayenne boosts metabolism"],
+        "risks": ["Fried in oil", "High in carbs", "May be spicy"],
+        "tags": ["vegan", "gluten-free", "snack", "spicy"]
+      },
+      "ingredients": ["3 ripe plantains (sliced)", "1-2 teaspoons ginger (grated)", "1 teaspoon cayenne pepper", "Salt to taste", "Oil for frying"],
+      "instructions": ["Step 1: In a bowl, mix sliced plantains with ginger, cayenne pepper, and salt.", "Step 2: Heat oil in a frying pan.", "Step 3: Fry plantain slices until golden brown.", "Step 4: Serve hot as a snack or side dish."]
+    },
+    {
+      "id": 25,
+      "title": "Peppered Fish",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_RCzZvCgWhdPmsK8E_BmG0Xjh5CfbGKwBtIO5WsUhSg&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 310, "protein": 34, "carbs": 5, "fat": 18, "fiber": 1, "sodium": 540 },
+      "health": {
+        "benefits": ["High protein, low carb", "Omega-3 from fish", "Pepper aids metabolism"],
+        "risks": ["Fried in oil", "High sodium"],
+        "tags": ["high-protein", "low-carb", "spicy", "omega-3"]
+      },
+      "ingredients": ["2 lbs fish (cleaned)", "1 onion (sliced)", "2-3 tablespoons pepper sauce", "Salt and seasoning to taste", "Oil for frying"],
+      "instructions": ["Step 1: Marinate fish with salt and pepper sauce for at least 30 minutes.", "Step 2: In a frying pan, heat oil and fry the fish until golden brown.", "Step 3: Add sliced onions and stir-fry for a few minutes.", "Step 4: Serve hot with sides."]
+    },
+    {
+      "id": 26,
+      "title": "Ofada Rice and Ayamase Sauce",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx4XLkjFW5Z20CLdWpiFUDuAk5u5d11dm_EGKWddQ8EQ&s=10",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "South-West Nigeria" },
+      "nutrition": { "calories": 480, "protein": 22, "carbs": 56, "fat": 22, "fiber": 6, "sodium": 540 },
+      "health": {
+        "benefits": ["Ofada rice is high fiber and unpolished", "Green peppers are rich in vitamin C", "Assorted meats add iron"],
+        "risks": ["High calorie", "High fat from palm oil", "High sodium"],
+        "tags": ["high-fiber", "high-calorie", "traditional"]
+      },
+      "ingredients": ["2 cups ofada rice", "1 onion (sliced)", "2-3 green bell peppers", "2-3 scotch bonnet peppers", "Assorted meats"],
+      "instructions": ["Step 1: Cook ofada rice until soft and fluffy.", "Step 2: Blend green bell peppers, scotch bonnet, and onions into a smooth paste.", "Step 3: In a pot, cook assorted meats until tender.", "Step 4: Add the blended paste to the pot, stir and simmer for 15 minutes.", "Step 5: Serve the sauce over the rice."]
+    },
+    {
+      "id": 27,
+      "title": "Peppered Snails",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjgeu33bxNzPJ3aTIqg7-0mDRuGsaRi4EmzFZrZrMUtw&s=10",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "South-West Nigeria" },
+      "nutrition": { "calories": 220, "protein": 26, "carbs": 6, "fat": 10, "fiber": 1, "sodium": 480 },
+      "health": {
+        "benefits": ["Snails are very high in protein and low in fat", "Rich in iron and magnesium", "Low calorie for a protein source"],
+        "risks": ["Must be cleaned and cooked thoroughly — risk of parasites if undercooked", "Spicy"],
+        "tags": ["high-protein", "low-fat", "spicy"]
+      },
+      "ingredients": ["1 lb snails (cleaned)", "1 onion (sliced)", "2-3 tablespoons pepper sauce", "Salt and seasoning to taste", "Oil for frying"],
+      "instructions": ["Step 1: In a pot, boil snails until tender.", "Step 2: In a frying pan, heat oil and fry sliced onions until golden.", "Step 3: Add boiled snails and pepper sauce, stir-fry for 5-7 minutes.", "Step 4: Serve hot as a snack."]
+    },
+    {
+      "id": 28,
+      "title": "Coconut Rice",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG8BGO2dzAzzqhIq2Q0MOKrKqUCLFzp5t-IDFkgdjDTg&s=10",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 390, "protein": 6, "carbs": 58, "fat": 16, "fiber": 3, "sodium": 320 },
+      "health": {
+        "benefits": ["Coconut milk contains medium-chain triglycerides (MCTs)", "Bell peppers add vitamin C", "Fragrant and satisfying"],
+        "risks": ["High in saturated fat from coconut", "High in carbs"],
+        "tags": ["vegetarian", "high-carb", "high-fat"]
+      },
+      "ingredients": ["2 cups rice", "1 can coconut milk", "1 onion (chopped)", "2-3 bell peppers", "Salt to taste"],
+      "instructions": ["Step 1: In a pot, sauté chopped onions until soft.", "Step 2: Add bell peppers and cook for a few minutes.", "Step 3: Stir in rice, coconut milk, and salt; cook until rice is tender.", "Step 4: Serve hot as a side dish."]
+    },
+    {
+      "id": 29,
+      "title": "Ofe Nsala (White Soup)",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrWXcDHS3XthM937BWXrPHXjiCEV4Se1DocZNAWtk62Q&s=10",
+      "location": { "lat": 6.3350, "lng": 5.6037, "country": "Nigeria", "region": "South-South Nigeria" },
+      "nutrition": { "calories": 260, "protein": 28, "carbs": 8, "fat": 12, "fiber": 1, "sodium": 580 },
+      "health": {
+        "benefits": ["High protein from meat", "Low carb", "Crayfish adds minerals"],
+        "risks": ["High sodium", "Contains shellfish"],
+        "tags": ["high-protein", "low-carb", "traditional"]
+      },
+      "ingredients": ["2 lbs chicken or goat meat", "2 cups water", "1 onion (chopped)", "1-2 tablespoons ground crayfish", "Salt to taste"],
+      "instructions": ["Step 1: In a pot, boil chicken or goat meat with onions until tender.", "Step 2: Add ground crayfish and salt, and simmer for 10 minutes.", "Step 3: Serve hot as a soup."]
+    },
+    {
+      "id": 30,
+      "title": "Nkwobi (Cow Foot Dish)",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgfYOIB_uZTKTKw0jM3npLkyBb02usy20Nm07zxeKJEA&s=10",
+      "location": { "lat": 6.3350, "lng": 5.6037, "country": "Nigeria", "region": "South-South Nigeria" },
+      "nutrition": { "calories": 440, "protein": 30, "carbs": 8, "fat": 34, "fiber": 2, "sodium": 590 },
+      "health": {
+        "benefits": ["Cow foot is rich in collagen — good for joints and skin", "High protein"],
+        "risks": ["High in saturated fat", "High calorie", "High sodium"],
+        "tags": ["high-protein", "high-fat", "high-calorie"]
+      },
+      "ingredients": ["1 lb cow foot (cleaned and boiled)", "1 onion (chopped)", "2 tablespoons potash (or ground crayfish)", "Pepper to taste", "Palm oil to taste"],
+      "instructions": ["Step 1: In a bowl, combine boiled cow foot with onions, potash, and pepper.", "Step 2: Mix in palm oil to achieve a desired consistency.", "Step 3: Serve warm, garnished with sliced onions."]
+    },
+    {
+      "id": 31,
+      "title": "Peppered Goat Meat",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_aX7qfcwBp3eGiUokxqefzvveCgGA2uEvTUSoU3kjgQ&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 340, "protein": 32, "carbs": 4, "fat": 22, "fiber": 0, "sodium": 520 },
+      "health": {
+        "benefits": ["Goat meat is leaner than beef", "High protein, low carb", "Rich in iron and zinc"],
+        "risks": ["Fried in oil", "High sodium"],
+        "tags": ["high-protein", "low-carb", "spicy"]
+      },
+      "ingredients": ["2 lbs goat meat (cut into pieces)", "1 onion (chopped)", "2-3 tablespoons pepper sauce", "Salt and seasoning to taste", "Oil for frying"],
+      "instructions": ["Step 1: Marinate goat meat with salt and pepper sauce for at least 30 minutes.", "Step 2: In a frying pan, heat oil and fry goat meat until golden brown.", "Step 3: Add chopped onions and stir-fry for a few minutes.", "Step 4: Serve hot as a snack or main dish."]
+    },
+    {
+      "id": 32,
+      "title": "Jollof Spaghetti",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUyJr8pLtVkJTLcj9cCwdmMBw0Twqf_WL8VERSm9bPpw&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 420, "protein": 14, "carbs": 62, "fat": 12, "fiber": 4, "sodium": 480 },
+      "health": {
+        "benefits": ["Tomatoes provide lycopene", "Pasta is quick energy", "Can add vegetables for more nutrients"],
+        "risks": ["High carb", "Can be high in sodium"],
+        "tags": ["high-carb", "vegetarian-friendly"]
+      },
+      "ingredients": ["1 pack spaghetti", "2 cups tomatoes (blended)", "1 onion (chopped)", "2-3 tablespoons tomato paste", "Spices to taste"],
+      "instructions": ["Step 1: Cook spaghetti in boiling water until al dente; drain.", "Step 2: In a pot, sauté onions until golden.", "Step 3: Add blended tomatoes and tomato paste; cook for 10 minutes.", "Step 4: Stir in cooked spaghetti and spices; serve hot."]
+    },
+    {
+      "id": 33,
+      "title": "Chin Chin",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqJ3AL3Hnvqxhg7cWWgg84N_kk1HokeLCeqnqCK7qLWQ&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 380, "protein": 6, "carbs": 48, "fat": 18, "fiber": 2, "sodium": 220 },
+      "health": {
+        "benefits": ["Easy snack", "Provides quick energy"],
+        "risks": ["Fried — high in fat", "High in sugar and carbs", "Low in nutrients"],
+        "tags": ["snack", "high-carb", "high-fat", "high-sugar"]
+      },
+      "ingredients": ["4 cups all-purpose flour", "1 cup sugar", "1 cup milk", "1 teaspoon baking powder", "Oil for frying"],
+      "instructions": ["Step 1: In a bowl, mix flour, sugar, baking powder, and milk to form a dough.", "Step 2: Roll out the dough and cut into small pieces.", "Step 3: In a frying pan, heat oil and fry chin chin until golden brown.", "Step 4: Drain on paper towels and serve as a snack."]
+    },
+    {
+      "id": 34,
+      "title": "Fish Pepper Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCUgICaOmmRw9xnLrRGH2lH95k0Fv2bjyTQEahFMoCVA&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 220, "protein": 28, "carbs": 5, "fat": 9, "fiber": 1, "sodium": 620 },
+      "health": {
+        "benefits": ["High protein, low carb", "Fish omega-3s", "Warming and hydrating"],
+        "risks": ["High sodium", "Spicy"],
+        "tags": ["high-protein", "low-carb", "spicy"]
+      },
+      "ingredients": ["2 lbs fish (cleaned)", "1 onion (chopped)", "2-3 tablespoons pepper sauce", "Seasoning to taste", "Water as needed"],
+      "instructions": ["Step 1: In a pot, boil fish with onions and pepper sauce until cooked.", "Step 2: Add seasoning and adjust water to desired consistency.", "Step 3: Serve hot as a soup."]
+    },
+    {
+      "id": 35,
+      "title": "Fried Rice",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzzBLR3C_-RFBt6J9VevKKEHXt3F8983XRnTj7P0wfBg&s=10",
+      "location": { "lat": 9.0820, "lng": 8.6753, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 360, "protein": 10, "carbs": 58, "fat": 10, "fiber": 3, "sodium": 480 },
+      "health": {
+        "benefits": ["Carrots and peas add vitamins and fiber", "Quick energy from rice"],
+        "risks": ["High in carbs", "Can be high in sodium from seasoning"],
+        "tags": ["high-carb", "vegetarian-friendly"]
+      },
+      "ingredients": ["2 cups rice", "1 onion (chopped)", "2-3 carrots (chopped)", "Peas to taste", "Spices to taste"],
+      "instructions": ["Step 1: Cook rice and set aside.", "Step 2: In a pan, sauté onions and carrots until soft.", "Step 3: Add cooked rice and mix well with spices.", "Step 4: Serve hot as a side dish."]
+    },
+    {
+      "id": 36,
+      "title": "Suya",
+      "image": "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=800",
+      "location": { "lat": 12.0022, "lng": 8.5919, "country": "Nigeria", "region": "Northern Nigeria" },
+      "nutrition": { "calories": 380, "protein": 34, "carbs": 8, "fat": 24, "fiber": 2, "sodium": 640 },
+      "health": {
+        "benefits": ["Very high protein", "Low carb", "Spices like ginger and paprika have antioxidants"],
+        "risks": ["High sodium from spice mix", "Grilled meat — charred parts may contain carcinogens", "Spicy"],
+        "tags": ["high-protein", "low-carb", "grilled", "spicy"]
+      },
+      "ingredients": ["2 lbs beef (thinly sliced)", "3 tablespoons suya spice", "1 onion (sliced)", "2 tablespoons groundnut oil", "Salt to taste"],
+      "instructions": ["Step 1: Mix suya spice with oil to form a paste.", "Step 2: Coat beef slices with the spice paste.", "Step 3: Skewer the meat.", "Step 4: Grill over high heat, turning often, until charred and cooked through.", "Step 5: Serve with sliced onions and tomatoes."]
+    },
+    {
+      "id": 37,
+      "title": "Puff Puff",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAB3WaeE--GgQqP-ycV9GxNcjVGUitmc4HfuWgrsQJpQ&s=10",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "West Africa" },
+      "nutrition": { "calories": 310, "protein": 5, "carbs": 44, "fat": 13, "fiber": 1, "sodium": 180 },
+      "health": {
+        "benefits": ["Popular street snack", "Provides quick energy"],
+        "risks": ["Deep fried — high in fat", "High in sugar and carbs", "Low nutritional density"],
+        "tags": ["snack", "vegetarian", "fried"]
+      },
+      "ingredients": ["2 cups flour", "1/4 cup sugar", "1 teaspoon yeast", "1 cup warm water", "Oil for frying"],
+      "instructions": ["Step 1: Mix flour, sugar, yeast, and water into a smooth batter.", "Step 2: Cover and let rise 1 hour.", "Step 3: Heat oil in a deep pan.", "Step 4: Scoop batter balls into oil; fry until golden.", "Step 5: Drain and serve warm."]
+    },
+    {
+      "id": 38,
+      "title": "Asaro (Yam Porridge)",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSheQCSMbt6LxWivulezaPocYWkc42NumxdnClZyS3Wtw&s=10",
+      "location": { "lat": 7.3775, "lng": 3.9470, "country": "Nigeria", "region": "South-West Nigeria" },
+      "nutrition": { "calories": 340, "protein": 8, "carbs": 62, "fat": 8, "fiber": 6, "sodium": 420 },
+      "health": {
+        "benefits": ["Yam is rich in potassium and vitamin C", "Palm oil provides vitamin A", "Comforting and filling"],
+        "risks": ["High in carbs", "Moderate fat from palm oil"],
+        "tags": ["vegetarian", "high-carb", "comfort-food"]
+      },
+      "ingredients": ["2 cups yam (cubed)", "1/2 cup palm oil", "1 onion (chopped)", "2 tomatoes (blended)", "2 cups spinach", "Salt and seasoning"],
+      "instructions": ["Step 1: Boil yam until halfway tender.", "Step 2: Add blended tomatoes, onions, and palm oil.", "Step 3: Simmer until yam is soft and sauce thickens.", "Step 4: Stir in spinach; cook 3 more minutes.", "Step 5: Season and serve warm."]
+    },
+    {
+      "id": 39,
+      "title": "Ewa Agoyin",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzi0LOU9J-up50l4Hc_Q5htBxDNZ9gZvctcARcdRAidw&s=10",
+      "location": { "lat": 6.5244, "lng": 3.3792, "country": "Nigeria", "region": "South-West Nigeria" },
+      "nutrition": { "calories": 420, "protein": 18, "carbs": 52, "fat": 18, "fiber": 10, "sodium": 560 },
+      "health": {
+        "benefits": ["Beans are an excellent source of plant protein", "High fiber supports digestion", "Very filling"],
+        "risks": ["Sauce is high in palm oil", "High sodium"],
+        "tags": ["high-fiber", "high-protein", "vegetarian"]
+      },
+      "ingredients": ["2 cups beans", "1/2 cup palm oil", "2 onions (sliced)", "2-3 scotch bonnet peppers", "Salt to taste"],
+      "instructions": ["Step 1: Boil beans until very soft; mash slightly.", "Step 2: Heat palm oil and fry onions until dark.", "Step 3: Add blended peppers and cook until reduced.", "Step 4: Season with salt.", "Step 5: Serve beans topped with the pepper sauce."]
+    },
+    {
+      "id": 40,
+      "title": "Eba and Ogbono Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxGuJBRQcoxAw1883UPmdGtsWRUUzV9NlPB6ss38TFhA&s=10",
+      "location": { "lat": 6.3350, "lng": 5.6037, "country": "Nigeria", "region": "South-South Nigeria" },
+      "nutrition": { "calories": 480, "protein": 22, "carbs": 54, "fat": 20, "fiber": 7, "sodium": 520 },
+      "health": {
+        "benefits": ["Ogbono seeds are rich in protein and healthy fats", "Garri provides energy", "Fiber aids digestion"],
+        "risks": ["High in calories", "High sodium", "High carb"],
+        "tags": ["high-carb", "high-protein", "traditional"]
+      },
+      "ingredients": ["2 cups garri", "1 cup ground ogbono seeds", "2 cups meat or fish", "1/2 cup palm oil", "Salt and seasoning"],
+      "instructions": ["Step 1: Boil meat with seasoning.", "Step 2: Add palm oil and ogbono paste, stirring constantly.", "Step 3: Simmer until thick and stretchy.", "Step 4: Season to taste.", "Step 5: Serve with eba (prepared from garri and hot water)."]
+    },
+    {
+      "id": 41,
+      "title": "Tuwo Shinkafa",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwAqkGHf0omEoDDeKh0nX5uKZ0-Vi9SRdkHlv7F8ZopA&s=10",
+      "location": { "lat": 12.0022, "lng": 8.5919, "country": "Nigeria", "region": "Northern Nigeria" },
+      "nutrition": { "calories": 280, "protein": 5, "carbs": 62, "fat": 1, "fiber": 2, "sodium": 30 },
+      "health": {
+        "benefits": ["Simple, easily digestible carbohydrate", "Low fat", "Very low sodium"],
+        "risks": ["Low protein", "High carb — not ideal for diabetics in large portions"],
+        "tags": ["high-carb", "low-fat", "vegan"]
+      },
+      "ingredients": ["2 cups short-grain rice", "Water as needed"],
+      "instructions": ["Step 1: Boil rice until very soft.", "Step 2: Mash with a wooden spoon until smooth.", "Step 3: Shape into balls.", "Step 4: Serve with soup (miyan kuka, miyan taushe, etc.)."]
+    },
+    {
+      "id": 42,
+      "title": "Miyan Kuka",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiT-mub4-RIuUwtykQoAFXxA5dZr0q7BQ_ylRxkg0dzg&s=10",
+      "location": { "lat": 12.0022, "lng": 8.5919, "country": "Nigeria", "region": "Northern Nigeria" },
+      "nutrition": { "calories": 300, "protein": 24, "carbs": 18, "fat": 14, "fiber": 8, "sodium": 480 },
+      "health": {
+        "benefits": ["Baobab leaves are very high in calcium and iron", "High fiber", "High protein from meat"],
+        "risks": ["High sodium from seasoning", "Contains dried leaves — some may have been sun-dried in dusty conditions"],
+        "tags": ["high-fiber", "high-iron", "traditional"]
+      },
+      "ingredients": ["1 cup kuka powder (baobab leaves)", "1 lb beef", "1 onion (chopped)", "2 tablespoons ground crayfish", "1 teaspoon ground ginger", "Salt and seasoning"],
+      "instructions": ["Step 1: Boil beef with onions and seasoning until tender.", "Step 2: Add ground crayfish and ginger.", "Step 3: Sprinkle kuka powder into the pot while stirring.", "Step 4: Simmer 10 minutes until thickened.", "Step 5: Serve with tuwo shinkafa."]
+    },
+    {
+      "id": 43,
+      "title": "Chicken Suya Skewers",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROhMG0iKgBWsTxw0JUjOmKFqY18e2JfFDGXRIVR99J3w&s=10",
+      "location": { "lat": 12.0022, "lng": 8.5919, "country": "Nigeria", "region": "Northern Nigeria" },
+      "nutrition": { "calories": 290, "protein": 30, "carbs": 6, "fat": 16, "fiber": 1, "sodium": 580 },
+      "health": {
+        "benefits": ["Leaner than beef suya", "High protein, low carb", "Grilled not fried"],
+        "risks": ["High sodium from spice", "Spicy"],
+        "tags": ["high-protein", "low-carb", "grilled", "spicy"]
+      },
+      "ingredients": ["2 lbs chicken (cubed)", "3 tablespoons suya spice", "2 tablespoons oil", "1 onion (sliced)", "Salt to taste"],
+      "instructions": ["Step 1: Coat chicken in suya spice and oil.", "Step 2: Skewer the chicken pieces.", "Step 3: Grill until charred and cooked through.", "Step 4: Serve with onions."]
+    },
+    {
+      "id": 44,
+      "title": "Waakye",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShl1orHjwzJeuZ-ALOjqNkfrDyVV9_nqAucvU8BbSXTQ&s=10",
+      "location": { "lat": 5.6037, "lng": -0.1870, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 380, "protein": 14, "carbs": 64, "fat": 8, "fiber": 10, "sodium": 340 },
+      "health": {
+        "benefits": ["Beans + rice combo provides complete protein", "Very high fiber", "Sorghum leaves add natural color"],
+        "risks": ["High carb", "Can be high in sodium if served with lots of salted fish"],
+        "tags": ["high-fiber", "vegetarian-friendly", "gluten-free"]
+      },
+      "ingredients": ["1 cup rice", "1 cup black-eyed peas", "1 onion (chopped)", "2-3 sorghum leaves (or baking soda)", "Salt to taste"],
+      "instructions": ["Step 1: Soak beans overnight.", "Step 2: Boil beans until half-cooked.", "Step 3: Add rice, onions, and sorghum leaves.", "Step 4: Cook until rice and beans are tender.", "Step 5: Serve with shito (pepper sauce) and fried plantain."]
+    },
+    {
+      "id": 45,
+      "title": "Fufu with Light Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pnv-nnNmH2Szzct1pKnG5QzgLPnZCq1xmndgB2I7-A&s=10",
+      "location": { "lat": 5.6037, "lng": -0.1870, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 440, "protein": 22, "carbs": 58, "fat": 12, "fiber": 6, "sodium": 420 },
+      "health": {
+        "benefits": ["Cassava and plantain are naturally gluten-free", "Fish provides omega-3", "Tomatoes add lycopene"],
+        "risks": ["High carb", "Cassava-based fufu is very dense — portion control matters"],
+        "tags": ["high-carb", "high-protein", "gluten-free"]
+      },
+      "ingredients": ["2 cups cassava (boiled)", "1 ripe plantain (boiled)", "1 lb fish or goat", "2 tomatoes (blended)", "1 onion (chopped)", "2-3 chili peppers"],
+      "instructions": ["Step 1: Boil cassava and plantain; pound into fufu.", "Step 2: In a separate pot, boil fish or goat with tomatoes, onions, and chili until tender.", "Step 3: Simmer the soup until reduced and flavorful.", "Step 4: Serve the soup hot with fufu."]
+    },
+    {
+      "id": 46,
+      "title": "Banku and Tilapia",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsDrbYMayM9uD0ryZjrA6oHdRLvFeqrXOunUotJUyGnQ&s=10",
+      "location": { "lat": 5.6037, "lng": -0.1870, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 520, "protein": 30, "carbs": 62, "fat": 14, "fiber": 5, "sodium": 480 },
+      "health": {
+        "benefits": ["Tilapia is high in protein and omega-3", "Banku provides slow-release energy", "Grilled fish is healthier than fried"],
+        "risks": ["High in carbs", "Banku is fermented — some may find it difficult to digest"],
+        "tags": ["high-carb", "high-protein", "omega-3", "grilled"]
+      },
+      "ingredients": ["2 cups corn dough", "1 cup cassava dough", "2 whole tilapia (cleaned)", "3 tomatoes", "2 onions", "3 chili peppers"],
+      "instructions": ["Step 1: Mix corn and cassava dough; ferment 1-2 days.", "Step 2: Cook, stirring constantly, until firm — this makes banku.", "Step 3: Grill tilapia over charcoal until cooked.", "Step 4: Blend tomatoes, onions, and chili for a dipping sauce.", "Step 5: Serve hot."]
+    },
+    {
+      "id": 47,
+      "title": "Groundnut Soup",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB8m8XDA2zMAp1NlM-il1cn-m8gSm9dWS1mRa2Z97ABQ&s=10",
+      "location": { "lat": 7.9465, "lng": -1.0232, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 420, "protein": 24, "carbs": 18, "fat": 28, "fiber": 7, "sodium": 440 },
+      "health": {
+        "benefits": ["Groundnuts are rich in protein and healthy fats", "High fiber", "Vitamin E content"],
+        "risks": ["High fat and calories", "Common allergen"],
+        "tags": ["high-protein", "high-fat", "traditional"]
+      },
+      "ingredients": ["1 cup groundnut paste", "1 lb chicken or fish", "2 tomatoes", "1 onion", "2 chili peppers", "Salt to taste"],
+      "instructions": ["Step 1: Boil chicken or fish until tender.", "Step 2: Blend tomatoes, onion, and chili into a paste.", "Step 3: Add groundnut paste to the pot; stir to combine.", "Step 4: Simmer 20 minutes until the soup thickens.", "Step 5: Serve with rice balls or fufu."]
+    },
+    {
+      "id": 48,
+      "title": "Red Red",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIN0POQKYsQwwXfK3UkLr8d1PuJZF09kO8td9PafXrg&s=10",
+      "location": { "lat": 5.6037, "lng": -0.1870, "country": "Ghana", "region": "West Africa" },
+      "nutrition": { "calories": 340, "protein": 14, "carbs": 48, "fat": 14, "fiber": 12, "sodium": 380 },
+      "health": {
+        "benefits": ["Beans are high in fiber and plant protein", "Palm oil has vitamin A", "Plantains provide potassium"],
+        "risks": ["Fried plantains are high in oil", "High in carbs"],
+        "tags": ["vegetarian", "high-fiber", "comfort-food"]
+      },
+      "ingredients": ["2 cups black-eyed peas", "2 ripe plantains", "1/4 cup palm oil", "1 onion (chopped)", "2 tomatoes (blended)", "Salt to taste"],
+      "instructions": ["Step 1: Boil beans until soft.", "Step 2: Heat palm oil, fry onions and tomatoes.", "Step 3: Add beans; simmer 10 min.", "Step 4: Fry sliced plantains in oil until golden.", "Step 5: Serve beans topped with plantains."]
+    },
+    {
+      "id": 49,
+      "title": "Thieboudienne",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVEF5f5rXqLc3IFI1LIm_tdUWRAsidM4whkjJ7QJdVtQ&s=10",
+      "location": { "lat": 14.6928, "lng": -17.4467, "country": "Senegal", "region": "West Africa" },
+      "nutrition": { "calories": 520, "protein": 30, "carbs": 62, "fat": 16, "fiber": 6, "sodium": 540 },
+      "health": {
+        "benefits": ["Fish provides omega-3", "Tomatoes add lycopene", "Very balanced dish — protein + carb + vegetables"],
+        "risks": ["High in calories", "High in sodium", "High carb"],
+        "tags": ["high-protein", "high-carb", "one-pot"]
+      },
+      "ingredients": ["2 cups rice", "2 lbs fish (cleaned)", "3 tomatoes (blended)", "1 onion (chopped)", "2 carrots (sliced)", "1 cup cabbage (chopped)", "Salt and pepper to taste"],
+      "instructions": ["Step 1: Stuff fish with a paste of parsley, garlic, and chili.", "Step 2: Brown fish in oil; set aside.", "Step 3: Sauté onions; add blended tomatoes and cook until thick.", "Step 4: Add water and vegetables; simmer 20 minutes.", "Step 5: Add rice and cook until tender.", "Step 6: Serve with the fish on top."]
+    },
+    {
+      "id": 50,
+      "title": "Yassa Chicken",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWmZ-1G1QtQqBmmP81lRUphjb7Xy9-3KUh_qkwYtKuZg&s=10",
+      "location": { "lat": 14.6928, "lng": -17.4467, "country": "Senegal", "region": "West Africa" },
+      "nutrition": { "calories": 420, "protein": 34, "carbs": 22, "fat": 22, "fiber": 4, "sodium": 480 },
+      "health": {
+        "benefits": ["High protein from chicken", "Onions and lemon add vitamin C", "Lower carb than rice-based dishes"],
+        "risks": ["Marinade may be high in salt", "Fried chicken is higher in fat than grilled"],
+        "tags": ["high-protein", "low-carb", "citrus"]
+      },
+      "ingredients": ["2 lbs chicken (cut into pieces)", "4 onions (sliced)", "2 lemons (juiced)", "2-3 tablespoons mustard", "3 chili peppers", "Salt and pepper"],
+      "instructions": ["Step 1: Marinate chicken with lemon juice, mustard, salt, and pepper for 30 min.", "Step 2: Grill chicken until cooked; set aside.", "Step 3: Sauté onions until soft and translucent.", "Step 4: Add remaining marinade; simmer 10 min.", "Step 5: Return chicken to pan and simmer 5 min.", "Step 6: Serve with rice or bread."]
+    }
+  ]
+}
